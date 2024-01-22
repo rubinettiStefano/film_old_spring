@@ -11,5 +11,4 @@ public interface Film_screeningRepository extends JpaRepository<Film_screening,I
 {
     //abbiamo finito
     //abbiamo già una repository con tutti i metodi di CRUD
-    List<Film_screening> findByPriceGreatherThan(double price);
 }
