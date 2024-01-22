@@ -53,7 +53,7 @@ public class Film_screeningController
     // }
 
     @GetMapping("/form")
-    public String getMethodName() 
+    public String showForm() 
     {
         return "insertForm";
     }
@@ -76,7 +76,7 @@ public class Film_screeningController
     @PostMapping("/form")
     //con @ModelAttribute in automatico converte i parametri
     //in un oggetto di tipo Film_screening che mette dentro il parametro formConvertita
-    public String postMethodName(@ModelAttribute Film_screening formConvertita) 
+    public String insertFromForm(@ModelAttribute Film_screening formConvertita) 
     {
         repo.save(formConvertita);
         return "insertForm";
