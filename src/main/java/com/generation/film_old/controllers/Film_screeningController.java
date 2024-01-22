@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.generation.film_old.model.components.Console;
+import com.generation.film_old.model.components.ConsoleFactory;
 import com.generation.film_old.model.entities.Film_screening;
 import com.generation.film_old.model.repositories.Film_screeningRepository;
 
@@ -19,7 +21,16 @@ import com.generation.film_old.model.repositories.Film_screeningRepository;
 public class Film_screeningController 
 {
 
-    
+    //V1
+    private Console c = new Console();//otteniamo istanza tramite costruttore
+    //V2
+    private Console c2 = ConsoleFactory.make();//otteniamo istanza tramite factory
+    //V3
+    @Autowired //all'avvio, poco dopo, pesca dall'application context un oggetto (Bean)
+    //compatibile con il tipo Console e lo assegna a c3
+    private Console c3;
+
+
     // Repository <Film_screening> repo = new Film_screeningRepository();
     // @Override
     // protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -39,8 +50,8 @@ public class Film_screeningController
     //con method GET all'endpoint /homepage
     public String seeAllScreenings(Model model)//model contiene gli attributi da passare alla view
     {
+        Integer.parseInt("paperino");
         model.addAttribute("screenings", repo.findAll());
-
         //chiamiamo la view
         return "showScreenings";//qui sto chiamando la view showScreenings.ftlh in templates
     }
